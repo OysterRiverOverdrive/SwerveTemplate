@@ -21,7 +21,12 @@ public final class Constants {
     // Determined here but assigned in the driver station to determine and organize physical ports
     // the controllers are plug into
     public static final int kDrveControllerPort = 0;
-    public static final int kOperControllerPort = 0;
+    public static final int kOperControllerPort = 1;
+
+    public enum joysticks {
+      DRIVER,
+      OPERATOR
+    }
   }
 
   // Constants specifically for Swerve Module
