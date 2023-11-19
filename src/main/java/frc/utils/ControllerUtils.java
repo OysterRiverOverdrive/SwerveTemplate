@@ -9,8 +9,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.DriveConstants;
 import java.util.function.BooleanSupplier;
 
-
-// Class to get button inputs from Joystick Library/Controllers 
+// Class to get button inputs from Joystick Library/Controllers
 public class ControllerUtils {
   private Joystick driver = new Joystick(DriveConstants.kDrveControllerPort);
   private Joystick operator = new Joystick(DriveConstants.kDrveControllerPort);
