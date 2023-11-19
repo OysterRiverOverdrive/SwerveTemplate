@@ -22,10 +22,13 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
   // Constants specifically for Driving & Operation
   public static class DriveConstants {
-    public static final int kDriverControllerPort = 0;
+    // Controller Ports ---
+    // Determined here but assigned in the driver station to determine and organize physical ports the controllers are plug into
+    public static final int kDrveControllerPort = 0;
+    public static final int kOperControllerPort = 0;
   }
 
-  // Constants specifically for Swerve Modual
+  // Constants specifically for Swerve Module
   public static final class ModuleConstants {
     // The MAXSwerve module can be configured with one of three pinion gears: 12T, 13T, or 14T.
     // This changes the drive speed of the module (a pinion gear with more teeth will result in a
@@ -36,6 +39,7 @@ public final class Constants {
     // the steering motor in the MAXSwerve Module.
     public static final boolean kTurningEncoderInverted = true;
 
+    // Unknown Usage ---
     // Calculations required for driving motor conversion factors and feed forward
     public static final double kDrivingMotorFreeSpeedRps = NeoMotorConstants.kFreeSpeedRpm / 60;
     public static final double kWheelDiameterMeters = 0.0762;
@@ -44,25 +48,24 @@ public final class Constants {
     public static final double kDrivingMotorReduction = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
     public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters)
         / kDrivingMotorReduction;
-
     public static final double kDrivingEncoderPositionFactor = (kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction; // meters
     public static final double kDrivingEncoderVelocityFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) / 60.0; // meters per second
-
     public static final double kTurningEncoderPositionFactor = (2 * Math.PI); // radians
     public static final double kTurningEncoderVelocityFactor = (2 * Math.PI) / 60.0; // radians per second
-
     public static final double kTurningEncoderPositionPIDMinInput = 0; // radians
     public static final double kTurningEncoderPositionPIDMaxInput = kTurningEncoderPositionFactor; // radians
 
+    // PID Driving Values ---
+    // Most likely used to act as a form of slew
+    // See: https://docs.wpilib.org/en/stable/docs/software/advanced-controls/filters/slew-rate-limiter.html
     public static final double kDrivingP = 0.04;
     public static final double kDrivingI = 0;
     public static final double kDrivingD = 0;
     public static final double kDrivingFF = 1 / kDriveWheelFreeSpeedRps;
     public static final double kDrivingMaxOutput = 1;
     public static final double kDrivingMinOutput = kDrivingMaxOutput*-1;
-
     public static final double kTurningP = 1;
     public static final double kTurningI = 0;
     public static final double kTurningD = 0;
@@ -70,9 +73,13 @@ public final class Constants {
     public static final double kTurningMaxOutput = 1;
     public static final double kTurningMinOutput = kTurningMaxOutput*-1;
 
+    // Swerve Module Idle Modes ---
+    // These determine how the module behavior when there is a lack of input from the driver
     public static final IdleMode kDrivingMotorIdleMode = IdleMode.kBrake;
     public static final IdleMode kTurningMotorIdleMode = IdleMode.kBrake;
 
+    // Current limits ---
+    // Meant for the electrical side of the drivetrain to make sure that the drivetrain isn't drawing too much power
     public static final int kDrivingMotorCurrentLimit = 50; // amps
     public static final int kTurningMotorCurrentLimit = 20; // amps
   }
