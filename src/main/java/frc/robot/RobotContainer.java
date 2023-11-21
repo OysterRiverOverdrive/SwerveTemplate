@@ -5,17 +5,21 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
-
+import frc.robot.commands.TeleopCmd;
+import frc.robot.subsystems.DrivetrainSubsystem;
 
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
+  // Subsystems
+  private final DrivetrainSubsystem drivetrain = new DrivetrainSubsystem();
 
-  
+  // Commands
+  private final TeleopCmd teleopCmd = new TeleopCmd(drivetrain);
+
   public RobotContainer() {
     // Configure the trigger bindings
+    drivetrain.setDefaultCommand(teleopCmd);
     configureBindings();
   }
-
 
   private void configureBindings() {
     // Configure buttons
