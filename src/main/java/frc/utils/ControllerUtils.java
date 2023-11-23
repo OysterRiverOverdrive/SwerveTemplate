@@ -12,7 +12,7 @@ import java.util.function.BooleanSupplier;
 // Class to get button inputs from Joystick Library/Controllers
 public class ControllerUtils {
   private Joystick driver = new Joystick(DriveConstants.kDrveControllerPort);
-  private Joystick operator = new Joystick(DriveConstants.kDrveControllerPort);
+  private Joystick operator = new Joystick(DriveConstants.kOperControllerPort);
 
   public Trigger supplier(int buttonID, DriveConstants.joysticks joystick) {
     if (joystick == DriveConstants.joysticks.DRIVER) {
