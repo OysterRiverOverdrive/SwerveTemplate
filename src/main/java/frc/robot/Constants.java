@@ -29,7 +29,7 @@ public final class Constants {
     // Driver Controller Joystick ---
     public static final int kDriveX = 0;
     public static final int kDriveY = 1;
-    public static final int kDriveRotate = 2;
+    public static final int kDriveRotate = 4;
 
     public enum joysticks {
       DRIVER,
@@ -61,14 +61,20 @@ public final class Constants {
   // Constants specifically for the physical robot
   public static final class RobotConstants {
     // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 11;
-    public static final int kRearLeftDrivingCanId = 13;
-    public static final int kFrontRightDrivingCanId = 15;
-    public static final int kRearRightDrivingCanId = 17;
-    public static final int kFrontLeftTurningCanId = 10;
-    public static final int kRearLeftTurningCanId = 12;
-    public static final int kFrontRightTurningCanId = 14;
-    public static final int kRearRightTurningCanId = 16;
+    
+    
+    public static final int kFrontRightDrivingCanId = 1;
+    public static final int kFrontRightTurningCanId = 2;
+    
+    public static final int kFrontLeftDrivingCanId = 3;
+    public static final int kFrontLeftTurningCanId = 4;
+
+    public static final int kRearLeftDrivingCanId = 5;
+    public static final int kRearLeftTurningCanId = 6;
+    
+    public static final int kRearRightDrivingCanId = 7;
+    public static final int kRearRightTurningCanId = 8;
+    
 
     public static final boolean kGyroReversed = false;
 
