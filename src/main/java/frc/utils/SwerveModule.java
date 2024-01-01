@@ -4,10 +4,10 @@
 
 package frc.utils;
 
-import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxAbsoluteEncoder;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 import com.revrobotics.SparkMaxPIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -20,7 +20,7 @@ public class SwerveModule {
   private final CANSparkMax m_turningSparkMax;
 
   private final RelativeEncoder m_drivingEncoder;
-  private final AbsoluteEncoder m_turningEncoder;
+  private final SparkMaxAbsoluteEncoder m_turningEncoder;
 
   private final SparkMaxPIDController m_drivingPIDController;
   private final SparkMaxPIDController m_turningPIDController;
@@ -34,6 +34,7 @@ public class SwerveModule {
    * MAX, and a Through Bore Encoder.
    */
   public SwerveModule(int drivingCANId, int turningCANId, double chassisAngularOffset) {
+    // Creates one motor for driving the wheel and one for turning the wheel
     m_drivingSparkMax = new CANSparkMax(drivingCANId, MotorType.kBrushless);
     m_turningSparkMax = new CANSparkMax(turningCANId, MotorType.kBrushless);
 

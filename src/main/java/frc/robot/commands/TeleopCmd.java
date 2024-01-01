@@ -12,13 +12,21 @@ import frc.robot.subsystems.DrivetrainSubsystem;
 public class TeleopCmd extends CommandBase {
   /** Creates a new TeleopCmd. */
   private final DrivetrainSubsystem driveSub;
-
+  // Create a controller object
   private final Joystick controller = new Joystick(DriveConstants.kDrveControllerPort);
 
   public TeleopCmd(DrivetrainSubsystem drives) {
     driveSub = drives;
     addRequirements(driveSub);
     // Use addRequirements() here to declare subsystem dependencies.
+  }
+
+  public double deadzone(double joyvalue) {
+    if (Math.abs(joyvalue) > DriveConstants.deadzoneDriver) {
+      return joyvalue;
+    } else {
+      return 0.0;
+    }
   }
 
   // Called when the command is initially scheduled.
@@ -28,10 +36,13 @@ public class TeleopCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double ContX = controller.getRawAxis(DriveConstants.kDriveX);
-    double ContY = controller.getRawAxis(DriveConstants.kDriveY);
-    double ContRotate = controller.getRawAxis(DriveConstants.kDriveRotate);
-    driveSub.drive(ContX, ContY, ContRotate, false, true);
+    // Collect Joystick Axis information and put them through deadzone compensation
+    double ContX = deadzone(controller.getRawAxis(DriveConstants.kDriveX));
+    double ContY = deadzone(controller.getRawAxis(DriveConstants.kDriveY));
+    double ContRotate = deadzone(controller.getRawAxis(DriveConstants.kDriveRotate));
+
+    // Give all Axis to DrivetrainSubsystem Method to drive
+    driveSub.drive(ContX, ContY, ContRotate, false, false);
   }
 
   // Called once the command ends or is interrupted.

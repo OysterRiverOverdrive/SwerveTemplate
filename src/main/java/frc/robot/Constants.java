@@ -30,6 +30,7 @@ public final class Constants {
     public static final int kDriveX = 0;
     public static final int kDriveY = 1;
     public static final int kDriveRotate = 4;
+    public static final double deadzoneDriver = 0.2;
 
     public enum joysticks {
       DRIVER,
@@ -61,21 +62,19 @@ public final class Constants {
   // Constants specifically for the physical robot
   public static final class RobotConstants {
     // SPARK MAX CAN IDs
-    
-    
     public static final int kFrontRightDrivingCanId = 1;
     public static final int kFrontRightTurningCanId = 2;
-    
+
     public static final int kFrontLeftDrivingCanId = 3;
     public static final int kFrontLeftTurningCanId = 4;
 
-    public static final int kRearLeftDrivingCanId = 5;
-    public static final int kRearLeftTurningCanId = 6;
-    
-    public static final int kRearRightDrivingCanId = 7;
-    public static final int kRearRightTurningCanId = 8;
-    
+    public static final int kRearRightDrivingCanId = 5;
+    public static final int kRearRightTurningCanId = 6;
 
+    public static final int kRearLeftDrivingCanId = 7;
+    public static final int kRearLeftTurningCanId = 8;
+
+    // Used to declare Navx as upside down
     public static final boolean kGyroReversed = false;
 
     // Angular offsets of the modules relative to the chassis in radians
@@ -96,7 +95,6 @@ public final class Constants {
     // the steering motor in the MAXSwerve Module.
     public static final boolean kTurningEncoderInverted = true;
 
-    // Unknown Usage ---
     // Calculations required for driving motor conversion factors and feed forward
     public static final double kDrivingMotorFreeSpeedRps = NeoMotorConstants.kFreeSpeedRpm / 60;
     public static final double kWheelDiameterMeters = 0.0762;
