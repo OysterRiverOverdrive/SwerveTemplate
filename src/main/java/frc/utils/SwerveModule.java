@@ -34,6 +34,7 @@ public class SwerveModule {
    * MAX, and a Through Bore Encoder.
    */
   public SwerveModule(int drivingCANId, int turningCANId, double chassisAngularOffset) {
+    // Creates one motor for driving the wheel and one for turning the wheel
     m_drivingSparkMax = new CANSparkMax(drivingCANId, MotorType.kBrushless);
     m_turningSparkMax = new CANSparkMax(turningCANId, MotorType.kBrushless);
 

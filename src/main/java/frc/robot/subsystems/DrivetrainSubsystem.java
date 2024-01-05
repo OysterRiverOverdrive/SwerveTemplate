@@ -12,7 +12,6 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-// import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.RobotConstants;
@@ -63,9 +62,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private final String kmedium = "Medium Speeds";
   private final String kslow = "Low Speed";
 
-  private double x;
-  private double y;
-  private double r;
   private SlewRateLimiter m_magLimiter = new SlewRateLimiter(DriveConstants.kMagnitudeSlewRate);
   private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(DriveConstants.kRotationalSlewRate);
   private double m_prevTime = WPIUtilJNI.now() * 1e-6;
@@ -184,9 +180,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
     double xSpeedDelivered = xSpeedCommanded * maxSpeedDrive;
     double ySpeedDelivered = ySpeedCommanded * maxSpeedDrive;
     double rotDelivered = m_currentRotation * maxSpeedTurn;
-    x = xSpeedDelivered;
-    y = ySpeedDelivered;
-    r = rotDelivered;
 
     // var swerveModuleStates =
     //     DriveConstants.kDriveKinematics.toSwerveModuleStates(

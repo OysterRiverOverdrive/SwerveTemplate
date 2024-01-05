@@ -16,18 +16,24 @@ public class RobotContainer {
   private final TeleopCmd teleopCmd = new TeleopCmd(drivetrain);
 
   public RobotContainer() {
-    // Configure the trigger bindings
+    // Declare default command during Teleop Period as TeleopCmd(Driving Command)
     drivetrain.setDefaultCommand(teleopCmd);
+
+    // Configure Buttons Methods
     configureBindings();
   }
 
   private void configureBindings() {
     // Configure buttons
+    // Prior Reference:
+    // https://github.com/OysterRiverOverdrive/Charged-Up-2023-Atlas_Chainsaw/blob/main/src/main/java/frc/robot/RobotContainer.java
   }
 
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    // Return NOTHING
+    // Return NOTHING, replace with command to be run in autonomous period
+    // Prior Reference:
+    // https://github.com/OysterRiverOverdrive/Charged-Up-2023-Atlas_Chainsaw/blob/main/src/main/java/frc/robot/RobotContainer.java
     return null;
   }
 }

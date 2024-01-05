@@ -12,7 +12,7 @@ import frc.robot.subsystems.DrivetrainSubsystem;
 public class TeleopCmd extends CommandBase {
   /** Creates a new TeleopCmd. */
   private final DrivetrainSubsystem driveSub;
-
+  // Create a controller object
   private final Joystick controller = new Joystick(DriveConstants.kDrveControllerPort);
 
   public TeleopCmd(DrivetrainSubsystem drives) {
