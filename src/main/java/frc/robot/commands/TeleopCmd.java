@@ -21,6 +21,14 @@ public class TeleopCmd extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
+  public double deadzone(double joyvalue) {
+    if (Math.abs(joyvalue) > DriveConstants.deadzoneDriver) {
+      return joyvalue;
+    } else {
+      return 0.0;
+    }
+  }
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
@@ -28,10 +36,10 @@ public class TeleopCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double ContX = controller.getRawAxis(DriveConstants.kDriveX);
-    double ContY = controller.getRawAxis(DriveConstants.kDriveY);
-    double ContRotate = controller.getRawAxis(DriveConstants.kDriveRotate);
-    driveSub.drive(ContX, ContY, ContRotate, false, true);
+    double ContX = deadzone(controller.getRawAxis(DriveConstants.kDriveX)) * -1;
+    double ContY = deadzone(controller.getRawAxis(DriveConstants.kDriveY)) * -1;
+    double ContRotate = deadzone(controller.getRawAxis(DriveConstants.kDriveRotate)) * -1;
+    driveSub.drive(ContX, ContY, ContRotate, false, false);
   }
 
   // Called once the command ends or is interrupted.
