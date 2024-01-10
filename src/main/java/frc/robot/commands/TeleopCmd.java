@@ -5,11 +5,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-public class TeleopCmd extends CommandBase {
+public class TeleopCmd extends Command {
   /** Creates a new TeleopCmd. */
   private final DrivetrainSubsystem driveSub;
   // Create a controller object
